@@ -6,22 +6,30 @@ using UnityEngine;
 [RequireComponent (typeof(MeshFilter))]
 [RequireComponent (typeof(MeshRenderer))]
 [RequireComponent (typeof(MeshCollider))]
+[System.Serializable]
 public class TileMap : MonoBehaviour
 {
+    public static float tile;
 
-    int size_x = 100;//yuzeyin eni
-    int size_z = 50;//yuzey boyu
-    float tileSize = 1.0f;
+    public int yuzeyGenisligi = 10;
+    public int yuzeyBoyu = 10;
+    public float parcaBoyutu = 1;
+
 
     void Start()
-    {
-        BuildMesh();
+    {   
+       
     }
 
 
-  void  BuildMesh()
+    public void  BuildMesh()
     {
         //mesh icin gerekli verinin olusturulmasi
+
+        int size_x = yuzeyGenisligi;
+        int size_z = yuzeyBoyu;
+        float tileSize = parcaBoyutu;
+        
         int vsize_x = size_x + 1;
         int vsize_z = size_z + 1;
 
@@ -48,6 +56,8 @@ public class TileMap : MonoBehaviour
                 uv[z * vsize_x + x] = new Vector2((float)x / size_x, (float)z / size_z);
             }
         }
+
+        
 
         //yuzeyin sahip olmasi gereken ucgen sayisinin belirlenmesi
 
@@ -77,13 +87,19 @@ public class TileMap : MonoBehaviour
         mesh.normals = normals;
         mesh.uv = uv;
 
+        
+
 
         //obje uzerindeki componentlerin degiskene atanmasi
         MeshFilter mesh_filter = GetComponent<MeshFilter>();
         MeshRenderer mesh_renderer = GetComponent<MeshRenderer>();
         MeshCollider mesh_collider = GetComponent<MeshCollider>();
 
-        //objenin mesh'inin degistirilmesi
+        
         mesh_filter.mesh = mesh;
+
+
+        
+            
     }
 }
