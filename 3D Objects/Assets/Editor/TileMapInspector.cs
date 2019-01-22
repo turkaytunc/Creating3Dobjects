@@ -7,10 +7,6 @@ using UnityEditor;
 public  class TileMapInspector : Editor
 {
 
-    float p;
-    
-
-
 
     public override void OnInspectorGUI()
     {

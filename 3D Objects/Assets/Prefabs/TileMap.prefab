@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 1078137665933234390}
   - component: {fileID: 6538569536574930256}
   - component: {fileID: 8859970632330732081}
+  - component: {fileID: 1500161445}
   m_Layer: 0
   m_Name: TileMap
-  m_TagString: Untagged
+  m_TagString: TileMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7d2e7b3a01d586944913774a9a3cb28f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cbd340586168242a35024adbd0fae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yuzeyGenisligi: 5
-  yuzeyBoyu: 5
-  parcaBoyutu: 3
+  yuzeyGenisligi: 16
+  yuzeyBoyu: 16
+  parcaBoyutu: 2
+--- !u!114 &1500161445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791828843250555443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2c128b1f628c7c74da722e065d4a2277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedUnit: {fileID: 0}

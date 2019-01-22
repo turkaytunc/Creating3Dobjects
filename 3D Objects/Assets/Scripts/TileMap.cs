@@ -17,8 +17,8 @@ public class TileMap : MonoBehaviour
 
 
     void Start()
-    {   
-       
+    {
+        BuildMesh();
     }
 
 
@@ -97,6 +97,7 @@ public class TileMap : MonoBehaviour
 
         
         mesh_filter.mesh = mesh;
+        mesh_collider.sharedMesh = mesh;
 
 
         
