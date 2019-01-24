@@ -87,7 +87,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6791828843250555443}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4de17ea12f2e69243a31dd638f933387, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cbd340586168242a35024adbd0fae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yuzeyGenisligi: 16
-  yuzeyBoyu: 16
-  parcaBoyutu: 2
+  yuzeyGenisligi: 10
+  yuzeyBoyu: 10
+  parcaBoyutu: 1
 --- !u!114 &1500161445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c128b1f628c7c74da722e065d4a2277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedUnit: {fileID: 0}
+  selectionCube: {fileID: 0}
