@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 //scriptin bulundugu objede kotrol yapar eger yoksa gerekli componentleri ekler
 [RequireComponent (typeof(MeshFilter))]

@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionCube: {fileID: 0}
+  tower: {fileID: 4039963911914619187, guid: be3409f29a1474543bf9d615fce06c27, type: 3}

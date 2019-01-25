@@ -1,21 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 [RequireComponent(typeof(TileMap))]
 public class TileMouseOver : MonoBehaviour
 {
     TileMap tileMap;
     Vector3 currentCoordinates;
-    public GameObject selectionCube;
+    Vector3 towerTransformVector;
+
     float parca = 1.0f;
+    const int towerLimit = 10;
+    int towerCount = 0;
+    bool isTower = false;
+
+
+    public GameObject selectionCube;
+    public GameObject tower;
+
+
+
+  
+
 
 
     private void Start()
     {
         tileMap = GetComponent<TileMap>();
+        towerTransformVector = new Vector3();
        
+
+
 
     }
 
@@ -38,7 +51,6 @@ public class TileMouseOver : MonoBehaviour
             currentCoordinates.x = x;
             currentCoordinates.z = z;
 
-            Debug.Log("tile " + x + " + " + z);
             selectionCube.transform.position = currentCoordinates * tileMap.parcaBoyutu;
 
             //parca boyutuna gore secim kubunun boyutunu ayarlar
@@ -53,16 +65,34 @@ public class TileMouseOver : MonoBehaviour
             }
 
         }
-        
+
         // eger mouse sol tusuna basilirsa bulundugu noktaya secili oyun objesi instatiate edilecek
         // henuz yapim asamasinda
         if (Input.GetMouseButtonDown(0))
         {
+            towerTransformVector = selectionCube.transform.position;
+            isTower = false;
+            if(!(towerCount >= towerLimit) && myRaycastHit.collider != null)
+            {
+                if (isTower == false && !col.CompareTag("Tower"))
+                {
+                    Instantiate(tower, towerTransformVector, Quaternion.identity);
+                    isTower = true;
+                    towerCount += 1;
+                }
+
+            }
+            else if(towerCount >= towerLimit)
+            {
+                Debug.Log("maximum tower dikme limiti asildi!!");
+            }
+
 
         }
 
 
-   
+           
+
 
     }
 
