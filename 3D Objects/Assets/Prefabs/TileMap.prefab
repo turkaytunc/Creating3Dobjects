@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yuzeyGenisligi: 10
   yuzeyBoyu: 10
-  parcaBoyutu: 1
+  parcaBoyutu: 5
 --- !u!114 &1500161445
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(TileMap))]
 public class TileMouseOver : MonoBehaviour
@@ -6,28 +7,25 @@ public class TileMouseOver : MonoBehaviour
     TileMap tileMap;
     Vector3 currentCoordinates;
     Vector3 towerTransformVector;
+    List<Vector3> towerTransformList;
 
     float parca = 1.0f;
     const int towerLimit = 10;
     int towerCount = 0;
     bool isTower = false;
+    bool canBuild = false;
+
 
 
     public GameObject selectionCube;
     public GameObject tower;
-
-
-
-  
-
-
+    
 
     private void Start()
     {
         tileMap = GetComponent<TileMap>();
         towerTransformVector = new Vector3();
-       
-
+        towerTransformList = new List<Vector3>(towerLimit);
 
 
     }
@@ -54,6 +52,7 @@ public class TileMouseOver : MonoBehaviour
             selectionCube.transform.position = currentCoordinates * tileMap.parcaBoyutu;
 
             //parca boyutuna gore secim kubunun boyutunu ayarlar
+            //boylece gorsel olarak problem cikmasi engellenir.
             if (parca != tileMap.parcaBoyutu)
             {
                 Vector3 selectionVector = selectionCube.transform.localScale;
@@ -66,18 +65,24 @@ public class TileMouseOver : MonoBehaviour
 
         }
 
-        // eger mouse sol tusuna basilirsa bulundugu noktaya secili oyun objesi instatiate edilecek
+        //mouse ile tiklanan noktada tower objesi olusturuluyor
+        //yeni tower tipleri eklendikce guncellenmeli
+        //tower dikme ya da o noktada bulundan tower'i yok etme ozelligi eklenecek
         // henuz yapim asamasinda
         if (Input.GetMouseButtonDown(0))
         {
             towerTransformVector = selectionCube.transform.position;
+
             isTower = false;
-            if(!(towerCount >= towerLimit) && myRaycastHit.collider != null)
+            canBuild = TowerTransformList(towerTransformVector);
+
+            if(!(towerCount >= towerLimit))
             {
-                if (isTower == false && !col.CompareTag("Tower"))
+                if (isTower == false && canBuild)
                 {
                     Instantiate(tower, towerTransformVector, Quaternion.identity);
                     isTower = true;
+                    canBuild = false;
                     towerCount += 1;
                 }
 
@@ -91,8 +96,27 @@ public class TileMouseOver : MonoBehaviour
         }
 
 
-           
+    }
 
+
+    //mouse ile tiklanan yerin koordinatini alip , daha once tiklanan noktalarla benzerligini kontrol ediyor
+    //eger daha once ayni noktaya tower dikilmis ise tower dikmeyi engelliyor
+    //aksi halde o noktaya tower dikilebilir deyip, koordinati listeye ekliyor.
+    bool TowerTransformList(Vector3 trans)
+    {
+        
+       
+        foreach (Vector3 tr in towerTransformList)
+        {
+            if (trans == tr)
+            {
+                return false;
+            }
+
+        }
+
+        towerTransformList.Add(towerTransformVector);
+        return true;
 
     }
 
