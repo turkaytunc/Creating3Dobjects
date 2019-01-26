@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TileMap
   - Tower
+  - Enemy
   layers:
   - Default
   - TransparentFX
